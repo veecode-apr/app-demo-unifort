@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-demo-unifort 
+spec:
+  selector:
+    matchLabels:
+      app: app-demo-unifort
+  template:
+    metadata:
+      labels:
+        app: app-demo-unifort
+    spec:
+      containers:
+        - image: okteto.dev/java-gradle-app-demo-unifort:1.0.0
+          name: app-demo-unifort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-demo-unifort
+spec:
+  type: ClusterIP
+  ports:
+    - name: "app-demo-unifort"
+      port: 8080
+  selector:
+    app: app-demo-unifort
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-demo-unifort
+  annotations:
+    dev.okteto.com/generate-host: app-demo-unifort
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: app-demo-unifort
+                port:
+                  number: 8080
+            path: /
+            pathType: ImplementationSpecific

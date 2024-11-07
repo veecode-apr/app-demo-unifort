@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: app-demo-unifort
+  description: "app-demo-unifort"
+  annotations:
+    github.com/project-slug: veecode-apr/app-demo-unifort
+    backstage.io/techdocs-ref: dir:..
+    backstage.io/kubernetes-id: "app-demo-unifort"
+    vault.io/secrets-path: "app-demo-unifort"
+    grafana/dashboard-selector: "app-demo-unifort"
+    grafana/alert-label-selector: "alertname=app-demo-unifort"
+    argocd/proxy-url: '/argocd/api'
+    argocd/app-name: "app-demo-unifort"
+    kong-manager/service-name: veecode-apr.app-demo-unifort-service-0.8080
+    kong-manager/instance: /kong-manager/api
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "group:default/admin"

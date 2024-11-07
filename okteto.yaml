@@ -1,0 +1,19 @@
+name: app-demo-unifort
+build:
+  app-demo-unifort:
+    image: okteto.dev/java-gradle-app-demo-unifort:1.0.0
+    dockerfile: Dockerfile.okteto
+    context: .
+deploy:
+  - kubectl apply -f okteto-k8s.yaml
+dev:
+  app-demo-unifort:
+    image: veecode/okteto-runtime:java17
+    command: ./gradlew build --continuous --quiet & 2>1 >/dev/null && ./gradlew bootRun
+    sync:
+      - .:/usr/src/app
+    forward:
+      - 8080:8080
+      - 5005:5005
+    volumes:
+      - /home/gradle/.gradle
