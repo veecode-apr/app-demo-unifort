@@ -1,0 +1,38 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: app-demo-unifort
+  title: app-demo-unifort
+  publishedAt: "2024-11-07 15:02:09"
+  description: 'app-demo-unifort Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.'
+  tags:
+    - unifort
+    - demo
+    - spring
+    - java
+spec:
+  type: openapi
+  lifecycle: production
+  owner: consumer
+  definition: |-
+    openapi: 3.0.0
+    info:
+        description: 'app-demo-unifort Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.'
+        version: 1.0.2
+        title: app-demo-unifort
+        termsOfService: http://swagger.io/terms/
+        contact:
+            email: apiteam@swagger.io
+        license:
+            name: Apache 2.0
+            url: http://www.apache.org/licenses/LICENSE-2.0.html
+    servers:
+        - url: https://rest.apr.vee.codes/app-demo-unifort
+    tags:
+        - name: spec
+          description: Health
+          externalDocs:
+            description: Find out more
+            url: http://swagger.io
+    paths: {}
+    components: {}
